@@ -7,6 +7,7 @@ import { AircraftWeightModule } from './modules/aircraft-weight/aircraft-weight.
 import { RateSurchargesModule } from './modules/rate-surcharges/rate-surcharges.module';
 import { RateParkingModule } from './modules/rate-parking/rate-parking.module';
 import { ConfigModule } from '@nestjs/config';
+import { LandingParkingModule } from './modules/landing-parking/landing-parking.module';
 
 
 @Module({
@@ -17,7 +18,8 @@ import { ConfigModule } from '@nestjs/config';
     AircraftWeightModule,
     RateSurchargesModule,
     RateParkingModule,
-    ConfigModule.forRoot()
+    ConfigModule.forRoot(),
+    LandingParkingModule
   ]
 })
 export class AppModule {}
