@@ -1,27 +1,23 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MensajesController } from './mensajes/mensajes.controller';
-import { TypeOrmModule} from '@nestjs/typeorm';
-import { MensajesService } from './mensajes/mensajes.service';
-import { Mensaje } from './mensajes/entities/mensaje.entity';
+
+import { RateLandingModule } from './modules/rate-landing/rate-landing.module';
+import { EntityModule } from './modules/entity/entity.module';
+import { AtoCategoriesModule } from './modules/ato-categories/ato-categories.module';
+import { AircraftWeightModule } from './modules/aircraft-weight/aircraft-weight.module';
+import { RateSurchargesModule } from './modules/rate-surcharges/rate-surcharges.module';
+import { RateParkingModule } from './modules/rate-parking/rate-parking.module';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'nest',
-      password: 'app',
-      database: 'sendmeapp_db',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize : true
-
-    }),
-    TypeOrmModule.forFeature([Mensaje])
-  ],
-  controllers: [AppController, MensajesController],
-  providers: [AppService, MensajesService],
+    EntityModule,
+    RateLandingModule,
+    AtoCategoriesModule,
+    AircraftWeightModule,
+    RateSurchargesModule,
+    RateParkingModule,
+    ConfigModule.forRoot()
+  ]
 })
 export class AppModule {}
